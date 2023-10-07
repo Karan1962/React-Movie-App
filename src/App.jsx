@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-
-import MovieCard from "./components/MovieCard"
+import MovieCard from "./components/MovieCard";
 import SearchIcon from "./search.svg";
-import './App.css'
-
-const API_URL = "http://www.omdbapi.com?apikey=5ca3c5f2";
+import axios from "axios";
+import "./App.css";
 
 const App = () => {
+  const url = import.meta.env.VITE_MOVIE_URL;
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
 
@@ -15,11 +14,9 @@ const App = () => {
   }, []);
 
   const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json();
-
-    setMovies(data.Search);
-    
+    const response = await axios(`${url}&s=${title}`);
+    console.log(response.data.Search);
+    setMovies(response.data.Search);
   };
 
   return (
@@ -42,7 +39,7 @@ const App = () => {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie) => (
-            <MovieCard movie={movie} />
+            <MovieCard key={movie.imdbID} movie={movie} />
           ))}
         </div>
       ) : (
