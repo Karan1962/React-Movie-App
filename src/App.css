@@ -190,7 +190,33 @@ h1 {
 .movie:hover div:nth-of-type(1) {
   opacity: 1;
 }
-
+.Footer {
+  width: 100%;
+  background: #201f1f;
+}
+.Footer_content {
+  width: 80%;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin: auto;
+  padding: 60px;
+}
+.Footer_content p {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #f9d3b4;
+  font-family: var(--font-raleway);
+}
+.Footer_About,
+.Footer_Contact {
+  text-decoration: none;
+  transition: all ease-in-out 0.1s;
+}
+.Footer_About:hover,
+.Footer_Contact:hover{
+  scale: 1.04;
+}
 @media screen and (max-width: 600px) {
   .app {
     padding: 4rem 2rem;
